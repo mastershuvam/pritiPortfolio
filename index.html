@@ -13,6 +13,7 @@
             --light: #fefee3;
             --dark: #1d3557;
             --text: #333333;
+            --footer-bg: #0f1a2f;
         }
         
         * {
@@ -26,6 +27,7 @@
             line-height: 1.6;
             color: var(--text);
             background-color: #f8f9fa;
+            overflow-x: hidden;
         }
         
         .container {
@@ -51,13 +53,13 @@
         }
         
         .header-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             margin-bottom: 0.5rem;
             letter-spacing: 1px;
         }
         
         .header-content .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             font-weight: 300;
             margin-bottom: 1.5rem;
         }
@@ -74,7 +76,9 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .contact-item i {
@@ -97,23 +101,33 @@
             background-position: 0 0, 50px 50px;
         }
         
-        /* Navigation */
+        /* Navigation - Enhanced for Responsiveness */
         nav {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            padding: 0.5rem 0;
         }
         
         .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
+            transition: all 0.4s ease;
         }
         
         .nav-links li {
@@ -126,6 +140,7 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -147,18 +162,27 @@
             width: 100%;
         }
         
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
         /* Section Styles */
         section {
-            padding: 5rem 0;
+            padding: clamp(3rem, 5vw, 5rem) 0;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
         }
         
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
             color: var(--primary);
             position: relative;
             display: inline-block;
@@ -181,7 +205,8 @@
             max-width: 700px;
             margin: 0 auto;
             color: #555;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            padding: 0 15px;
         }
         
         /* Profile Section */
@@ -214,7 +239,7 @@
         
         .profile-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
         }
         
         /* Education Section */
@@ -224,7 +249,7 @@
         
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -245,7 +270,7 @@
         }
         
         .education-card h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 1.5vw, 1.4rem);
             margin-bottom: 0.5rem;
             color: var(--primary);
         }
@@ -254,6 +279,7 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
         }
         
         .education-card .details {
@@ -261,12 +287,14 @@
             justify-content: space-between;
             margin-top: 1rem;
             color: #666;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .education-card .gpa {
             font-weight: 600;
             color: var(--secondary);
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
         }
         
         /* Projects Section */
@@ -276,16 +304,16 @@
         
         .project-card {
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 0 auto clamp(2rem, 4vw, 3rem);
             background: linear-gradient(to right, white, #f1faee);
             border-radius: 10px;
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-left: 5px solid var(--accent);
         }
         
         .project-card h3 {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 2vw, 1.6rem);
             margin-bottom: 0.8rem;
             color: var(--dark);
         }
@@ -295,6 +323,7 @@
             font-weight: 500;
             margin-bottom: 1.5rem;
             display: block;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
         }
         
         /* Skills Section */
@@ -304,7 +333,7 @@
         
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
@@ -313,13 +342,13 @@
         .skill-category {
             background: white;
             border-radius: 10px;
-            padding: 2rem;
+            padding: clamp(1.5rem, 2.5vw, 2rem);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .skill-category h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
+            margin-bottom: 1rem;
             color: var(--primary);
             text-align: center;
             padding-bottom: 0.8rem;
@@ -335,6 +364,7 @@
             border-bottom: 1px solid #eee;
             display: flex;
             align-items: center;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
         }
         
         .skill-list li:last-child {
@@ -344,7 +374,7 @@
         .skill-list li i {
             color: var(--accent);
             margin-right: 10px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
         }
         
         /* Certificates Section */
@@ -359,7 +389,7 @@
         }
         
         .certificate-list li {
-            padding: 1.5rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
             margin-bottom: 1.5rem;
             background-color: #f8f9fa;
             border-radius: 8px;
@@ -375,8 +405,12 @@
         
         .certificate-list i {
             color: var(--secondary);
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
             margin-right: 15px;
+        }
+        
+        .certificate-list h3 {
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
         }
         
         /* Languages & Hobbies */
@@ -387,7 +421,7 @@
         .extras-container {
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: clamp(1.5rem, 3vw, 3rem);
             flex-wrap: wrap;
             max-width: 800px;
             margin: 0 auto;
@@ -396,14 +430,14 @@
         .languages, .hobbies {
             background: white;
             border-radius: 10px;
-            padding: 2rem;
+            padding: clamp(1.5rem, 2.5vw, 2rem);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             flex: 1;
-            min-width: 300px;
+            min-width: 250px;
         }
         
         .languages h3, .hobbies h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 1.8vw, 1.4rem);
             margin-bottom: 1.5rem;
             color: var(--primary);
             text-align: center;
@@ -418,39 +452,282 @@
         
         .languages li, .hobbies li {
             padding: 0.8rem 0;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.2vw, 1.1rem);
         }
         
         .language-level {
             font-style: italic;
             color: var(--secondary);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1vw, 0.9rem);
             margin-left: 5px;
         }
         
-        /* Footer */
+        /* Modern Footer Styles */
         footer {
-            background: linear-gradient(135deg, var(--dark), #1a2a3a);
+            background: var(--footer-bg);
             color: white;
-            padding: 3rem 0;
-            text-align: center;
+            padding: clamp(3rem, 5vw, 4rem) 0 0;
+            position: relative;
+            overflow: hidden;
         }
         
-        .declaration {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            font-style: italic;
+        .footer-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(214, 140, 69, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(76, 149, 108, 0.1) 0%, transparent 20%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .footer-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column {
             padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
+        }
+        
+        .footer-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .footer-contact-list {
+            list-style: none;
+        }
+        
+        .footer-contact-list li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact-list i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .footer-contact-list a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            line-height: 1.6;
+        }
+        
+        .footer-contact-list a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-contact-list .contact-label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+            color: #e0e0e0;
+        }
+        
+        .quick-links {
+            list-style: none;
+        }
+        
+        .quick-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .quick-links a {
+            color: #d1d1d1;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .quick-links a:hover {
+            color: var(--accent);
+            transform: translateX(8px);
+        }
+        
+        .quick-links i {
+            margin-right: 10px;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        
+        .quick-links a:hover i {
+            transform: rotate(10deg);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(214, 140, 69, 0.3);
+        }
+        
+        .declaration-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .declaration-box p {
+            font-style: italic;
+            line-height: 1.7;
+            color: #e0e0e0;
+        }
+        
+        .copyright-bar {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .copyright {
-            margin-top: 2rem;
             color: #aaa;
+            font-size: 0.95rem;
         }
         
-        /* Responsive Design */
+        .copyright a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .copyright a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Microscope Animation */
+        .microscope-animation {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            z-index: 3;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .microscope {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .microscope-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 10px;
+            background: #aaa;
+            border-radius: 3px;
+        }
+        
+        .microscope-arm {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 40px;
+            background: #ccc;
+            border-radius: 3px;
+        }
+        
+        .microscope-head {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #ddd;
+            box-shadow: 0 0 0 4px #888;
+        }
+        
+        .microscope-lens {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4a90e2;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(74, 144, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+        }
+        
+        /* Responsive Design Improvements */
         @media (max-width: 900px) {
             .profile-content {
                 flex-direction: column;
@@ -460,23 +737,90 @@
                 margin-bottom: 2rem;
             }
             
-            .header-content h1 {
-                font-size: 2.8rem;
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                padding: 1.2rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .header-content .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links li {
-                padding: 1rem;
+            .nav-container {
+                padding: 0 15px;
             }
             
             .section-header h2 {
-                font-size: 2rem;
+                font-size: clamp(1.6rem, 5vw, 2rem);
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                border-left: 3px solid var(--accent);
+                border-top: 3px solid var(--accent);
+            }
+            
+            .certificate-list li {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .certificate-list i {
+                margin-right: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 1.5rem 0;
+            }
+            
+            .contact-item span {
+                text-align: center;
+            }
+            
+            .profile-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-column {
+                padding: 1rem 0;
             }
         }
     </style>
@@ -491,30 +835,22 @@
                 <div class="subtitle">Microbiology Honours Student | Aspiring Diagnostic Scientist</div>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>pritebandopadhyay@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>9382860528</span>
-                    </div>
-                    <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Durgapur, India</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span>linkedin.com/in/prite-bandopadhyay-b3026b312</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
     
-    <!-- Navigation -->
+    <!-- Navigation - Enhanced -->
     <nav>
         <div class="container nav-container">
-            <ul class="nav-links">
+            <div class="logo">MicroBio Portfolio</div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -530,7 +866,9 @@
         <div class="container">
             <div class="profile-content">
                 <div class="profile-img">
-                    <img src="img1.jpg" alt="Prite Bandopadhyay">
+                    <div style="width: 300px; height: 300px; background: linear-gradient(135deg, #4c956c, #2c6e49); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; margin: 0 auto;">
+                        Profile Image<br><img src="img1.jpg" alt=""><i class="fas fa-user" style="font-size: 4rem; margin-top: 10px;"></i>
+                    </div>
                 </div>
                 <div class="profile-text">
                     <h2>Professional Profile</h2>
@@ -541,6 +879,8 @@
             </div>
         </div>
     </section>
+
+
     
     <!-- Education Section -->
     <section id="education" class="education">
@@ -712,16 +1052,138 @@
         </div>
     </section>
     
-    <!-- Footer -->
+    <!-- Modern Footer -->
     <footer>
-        <div class="container">
-            <div class="declaration">
-                <p>I, Prite Bandopadhyay, hereby declare that the above mentioned facts are true to the best of my knowledge and belief and can be proved through necessary documents.</p>
+        <div class="footer-pattern"></div>
+        <div class="microscope-animation">
+            <div class="microscope">
+                <div class="microscope-base"></div>
+                <div class="microscope-arm"></div>
+                <div class="microscope-head">
+                    <div class="microscope-lens"></div>
+                </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Prite Bandopadhyay. All Rights Reserved.</p>
+        </div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">Contact Me</h3>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="contact-label">Email</span>
+                                <a href="mailto:pritebandopadhyay@gmail.com">pritebandopadhyay@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span class="contact-label">Phone</span>
+                                <a href="tel:9382860528">+91 9382860528</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <span class="contact-label">LinkedIn</span>
+                                <a href="https://linkedin.com/in/prite-bandopadhyay-b3026b312" target="_blank">Prite Bandopadhyay</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="contact-label">Location</span>
+                                <a href="#">Durgapur, India</a>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="mailto:pritebandopadhyay@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/prite-bandopadhyay-b3026b312" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="tel:9382860528" class="social-icon">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="quick-links">
+                        <li><a href="#profile"><i class="fas fa-chevron-right"></i> Professional Profile</a></li>
+                        <li><a href="#education"><i class="fas fa-chevron-right"></i> Education</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#certificates"><i class="fas fa-chevron-right"></i> Certificates</a></li>
+                        <li><a href="#extras"><i class="fas fa-chevron-right"></i> Languages & Hobbies</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <div class="declaration-box">
+                        <p>I, Prite Bandopadhyay, hereby declare that the above mentioned facts are true to the best of my knowledge and belief and can be proved through necessary documents.</p>
+                    </div>
+                    
+                    <h3 class="footer-title">Connect With Me</h3>
+                    <p style="color: #d1d1d1; margin-bottom: 1.5rem;">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+                    
+                    <a href="mailto:pritebandopadhyay@gmail.com" class="submit-btn" style="display: inline-block; padding: 12px 30px; background: var(--accent); color: white; text-decoration: none; border-radius: 30px; font-weight: 600; transition: all 0.3s;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright-bar">
+            <div class="container">
+                <p class="copyright">&copy; 2025 <a href="#">Prite Bandopadhyay</a>. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for Microbiology</p>
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Change hamburger icon
+            if (navLinks.classList.contains('active')) {
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
